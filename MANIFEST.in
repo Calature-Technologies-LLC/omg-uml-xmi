@@ -1,0 +1,49 @@
+# MANIFEST.in for omg-uml-xmi
+# Controls which files are included in the source distribution (sdist)
+
+# Include all Python source files
+recursive-include src *.py *.pyi *.py.typed
+
+# Include documentation
+include README.md
+include CHANGELOG.md
+include LICENSE
+include CONTRIBUTING.md
+
+# Include documentation source files
+recursive-include docs *.rst *.md *.txt *.css *.js *.html *.png *.jpg *.svg
+
+# Include test files
+recursive-include tests *.py *.yaml *.yml *.json *.txt *.rst *.md
+
+# Include configuration files
+include pyproject.toml
+include .bumpversion.cfg
+include MANIFEST.in
+
+# Include GitHub workflows
+recursive-include .github *.yml *.yaml
+
+# Exclude unwanted files and directories
+exclude .gitignore
+exclude .gitattributes
+exclude .github/workflows/*.yaml
+exclude .git
+exclude .venv
+exclude venv
+exclude .venv
+exclude __pycache__
+exclude *.pyc
+exclude *.pyo
+exclude *.pyd
+exclude .pytest_cache
+exclude .mypy_cache
+exclude .ruff_cache
+exclude .coverage
+exclude htmlcov
+exclude .tox
+exclude dist
+exclude build
+exclude *.egg-info
+prune .worktrees
+prune .superpowers

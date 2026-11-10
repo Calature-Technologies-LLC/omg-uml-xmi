@@ -1,0 +1,72 @@
+# .github/workflows/version-tagging.yml
+name: Version Tagging
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: 'Version bump type'
+        description: 'Type of version bump to perform'
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+      dry_run:
+        description: 'Dry run (do not push changes)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  version-bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install bump2version
+        run: pip install bump2version
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump version
+        id: bump
+        run: |
+          bump2version ${{ github.event.inputs.version_type }} --dry-run=false --verbose
+          echo "new_version=$(grep '^version = ' pyproject.toml | cut -d'\"' -f2)" >> $GITHUB_OUTPUT
+
+      - name: Push changes
+        if: ${{ !github.event.inputs.dry_run }}
+        run: |
+          git push origin main --tags
+
+      - name: Create GitHub Release
+        if: ${{ !github.event.inputs.dry_run }}
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.bump.outputs.new_version }}
+          name: Release ${{ steps.bump.outputs.new_version }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Dry run output
+        if: ${{ github.event.inputs.dry_run }}
+        run: |
+          echo "Dry run completed. Version would be bumped to: ${{ steps.bump.outputs.new_version }}"
