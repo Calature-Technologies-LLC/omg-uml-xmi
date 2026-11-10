@@ -15,11 +15,12 @@ authors = [
 maintainers = [
     {name = "Calature Technologies", email = "opensource@calature.com"}
 ]
-keywords = ["uml", "xmi", "omg", "mof", "modeling", "serialization", "enterprise", "architecture"]
+keywords = ["uml", "xmi", "omg", "mof", "modeling", "serialization", "enterprise", "architecture", "mof", "ecore", "xmi", "uml", "metamodel"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Intended Audience :: Information Technology",
+    "Intended Audience :: Science/Research",
     "License :: OSI Approved :: BSD License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.12",
@@ -27,6 +28,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries",
     "Topic :: Software Development :: Code Generators",
     "Topic :: Text Processing :: Markup :: XML",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
     "lxml>=5.0,<6",
@@ -48,10 +50,11 @@ docs = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/calaturetech/omg-uml-xmi"
-Repository = "https://github.com/calaturetech/omg-uml-xmi"
-Issues = "https://github.com/calaturetech/omg-uml-xmi/issues"
+Homepage = "https://github.com/Calature-Technologies-LLC/omg-uml-xmi"
+Repository = "https://github.com/Calature-Technologies-LLC/omg-uml-xmi"
+Issues = "https://github.com/Calature-Technologies-LLC/omg-uml-xmi/issues"
 Documentation = "https://omg-uml-xmi.readthedocs.io"
+Changelog = "https://github.com/Calature-Technologies-LLC/omg-uml-xmi/blob/main/CHANGELOG.md"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/omg_uml_xmi"]
