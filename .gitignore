@@ -55,3 +55,4 @@ dmypy.json
 !tests/fixtures/*.xmi
 .worktrees/
 .superpowers/
+!tests/fixtures/*.xmi.worktrees/
