@@ -29,9 +29,8 @@ intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
 }
 
-# Templates and static files
+# Templates
 templates_path = ["_templates"]
-html_static_path = ["_static"]
 
 # Files and directories to exclude from the build
 exclude_patterns = [
