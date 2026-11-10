@@ -134,9 +134,3 @@ BSD-3-Clause. See [LICENSE](LICENSE).
 ## Contributing
 
 Issues and PRs welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## Context
-
-This library was extracted from the [`ctl-mof-xmi-mcp`](https://github.com/calaturetech/ctl-mof-xmi-mcp) project — a model authoring and interchange tool for OMG-aligned models with MCP interface.
-
-The blog post *[There Is No "Later": Why the JSON/YAML Culture Is Killing Enterprise Architecture](scratch/blog-ideas/there-is-no-later.md)* provides the broader context.
