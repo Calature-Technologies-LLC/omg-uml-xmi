@@ -1,0 +1,90 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "omg-uml-xmi"
+version = "0.1.0"
+description = "UML 2.5.1 / XMI 2.5.1 serializer for Python — fill the PyEcore gap for enterprise modeling"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+license = {text = "BSD-3-Clause"}
+authors = [
+    {name = "Devin Hedge", email = "devin@calature.com"}
+]
+maintainers = [
+    {name = "Calature Technologies", email = "opensource@calature.com"}
+]
+keywords = ["uml", "xmi", "omg", "mof", "modeling", "serialization", "enterprise", "architecture"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Code Generators",
+    "Topic :: Text Processing :: Markup :: XML",
+]
+dependencies = [
+    "lxml>=5.0,<6",
+    "pyecore>=0.15,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8,<9",
+    "pytest-asyncio>=0.23,<1",
+    "ruff>=0.5,<1",
+    "black>=24,<25",
+    "mypy>=1.10,<2",
+]
+docs = [
+    "sphinx>=7,<8",
+    "sphinx-rtd-theme>=2,<3",
+]
+
+[project.urls]
+Homepage = "https://github.com/calaturetech/omg-uml-xmi"
+Repository = "https://github.com/calaturetech/omg-uml-xmi"
+Issues = "https://github.com/calaturetech/omg-uml-xmi/issues"
+Documentation = "https://omg-uml-xmi.readthedocs.io"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/omg_uml_xmi"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-select = ["I", "UP", "PTH", "ERA", "T20", "RET", "SIM", "LOG"]
+ignore = ["S101"]
+
+[tool.black]
+line-length = 100
+target-version = ["py312", "py313"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_ignores = true
+disallow_untyped_defs = false
+strict = false
+
+[[tool.mypy.overrides]]
+module = ["pyecore.*", "lxml.*", "lxml.etree"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "omg_uml_xmi.*"
+warn_return_any = true
+warn_unused_ignores = true
+
+[tool.coverage.run]
+source = ["src/omg_uml_xmi"]
+omit = ["tests/*", "*/conftest.py"]
