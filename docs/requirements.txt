@@ -1,0 +1,14 @@
+# Documentation dependencies for omg-uml-xmi
+# Install with: pip install -r requirements.txt
+
+sphinx>=7,<8
+sphinx-rtd-theme>=2,<3
+
+# For autodoc type hints
+sphinx-autodoc-typehints>=1.25,<2
+
+# For copy button on code blocks
+sphinx-copybutton>=0.5,<1
+
+# For MyST markdown support (optional)
+myst-parser>=2,<3
