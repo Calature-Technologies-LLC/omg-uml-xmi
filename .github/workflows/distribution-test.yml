@@ -1,0 +1,23 @@
+# .github/workflows/distribution-test.yml
+name: Distribution Test
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  distribution-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          pip install -e .[dev]
+      - name: Run distribution tests
+        run: pytest tests/packaging/test_distribution.py -v
