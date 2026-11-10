@@ -58,6 +58,7 @@ Changelog = "https://github.com/Calature-Technologies-LLC/omg-uml-xmi/blob/main/
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/omg_uml_xmi"]
+package-data = { "omg_uml_xmi" = ["py.typed"] }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
