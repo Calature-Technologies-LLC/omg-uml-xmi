@@ -53,3 +53,5 @@ dmypy.json
 # Project-specific
 *.xmi
 !tests/fixtures/*.xmi
+.worktrees/
+.superpowers/
